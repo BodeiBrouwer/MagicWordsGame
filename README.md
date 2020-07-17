@@ -1,10 +1,8 @@
 # Magic Words Game
 
-![Hogwarts Pixel Art](/MagicWordsGame/Images/Hogwarts Pixel Art.jpeg)
-
 ## Description
 
-Test your **Harry Potter** knowledge! Link quotes from Harry Potter books and movies to the right character before the quote hits the cauldron by clicking on the character. Each correct answers earns you one point, each incorrect answers results in **GAME OVER**. Per game 5 random quotes will come down.
+Test your **Harry Potter** knowledge! Match quotes from Harry Potter books and movies with the right character by clicking on the character before the quote hits the cauldron. Each correct answer earns you one point, each incorrect answers results in **GAME OVER**. Per game 5 random quotes will come down.
 
 ## MVP (DOM - CANVAS)
 
