@@ -1,9 +1,10 @@
 let canvas = document.getElementById('myCanvas')
 let ctx = canvas.getContext('2d');
 canvas.style.border = '2px solid black';
+canvas.style.backgroundColor = '#ffffff';
 
 let bg = new Image();
-bg.src = '/MagicWordsGame/Images/Hogwarts Pixel Art.jpeg';
+bg.src = '/MagicWordsGame/Images/Hogwarts.png';
 
 let harry = new Image();
 harry.src = '/MagicWordsGame/Images/Harry pixel.png';
