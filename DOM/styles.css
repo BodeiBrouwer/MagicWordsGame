@@ -21,7 +21,7 @@ body {
     margin-top: 35%;
 }
 
-html {
+.background-image {
     background-image: url("/MagicWordsGame/Images/gif.gif");
     width: 100%;
     height: 100%;
@@ -35,8 +35,8 @@ html {
     letter-spacing: 2px;
 }
 
-#myCanvas {
+#canvas {
     display: flex;
     justify-content: center;
-    align-items: center;
+    margin-top: 10%;
 }

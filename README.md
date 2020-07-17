@@ -1,9 +1,5 @@
 # Magic Words Game
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 6e763bbddc0f59bd50df48964d60686cb8c14bd1
 ## Description
 
 Test your **Harry Potter** knowledge! Match quotes from Harry Potter books and movies with the right character by clicking on the character before the quote hits the cauldron. Each correct answer earns you one point, each incorrect answers results in **GAME OVER**. Per game 5 random quotes will come down.
