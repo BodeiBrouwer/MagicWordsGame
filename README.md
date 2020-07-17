@@ -1,6 +1,5 @@
 # Magic Words Game
 
-![Hogwarts Pixel Art](/Images/Hogwarts Pixel Art.jpeg) 
 
 ## Description
 
