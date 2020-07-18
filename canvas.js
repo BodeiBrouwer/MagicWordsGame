@@ -3,8 +3,6 @@ let ctx = canvas.getContext('2d');
 canvas.style.border = '2px solid black';
 canvas.style.backgroundColor = '#ffffff';
 
-let bg = new Image();
-bg.src = '/MagicWordsGame/Images/Hogwarts.png';
 
 let harry = new Image();
 harry.src = '/MagicWordsGame/Images/Harry pixel.png';
@@ -21,26 +19,32 @@ dumbledore.src = '/MagicWordsGame/Images/Dumbledore.png';
 let cauldron = new Image();
 cauldron.src = '/MagicWordsGame/Images/cauldron.gif'
 
+let parchment = new Image();
+parchment.src = '/MagicWordsGame/Images/parchment.png'
 
 let leftX = 30;
-let rightX = 670
-let topY = 150;
-let bottomY = 300;
+let rightX = 630
+let topY = 40;
+let bottomY = 270;
 let cauldronX = 400 - cauldron.width;
 let cauldronY = canvas.height - cauldron.height;
-let charHeight = 100;
-let charWidth = 80;
+let charHeight = 150;
+let charWidth = 120;
 
+ctx.font = '18px VCR OSD Mono Regular'
+ctx.fillText('Harry Potter quote here' 300, 150)
 
 function draw(){
-    ctx.drawImage(bg,0, 0, 800, 450)
-    
+ 
     ctx.drawImage(harry, leftX, topY, charHeight, charWidth);
     ctx.drawImage(hermione, leftX, bottomY, charHeight, charWidth);
     ctx.drawImage(ron, rightX, topY, charHeight, charWidth);
     ctx.drawImage(dumbledore, rightX, bottomY, charHeight, charWidth);
-    ctx.drawImage(cauldron, cauldronX, cauldronY, 100, 100);
+    ctx.drawImage(parchment, 250, 200, 300, 150);
 }
+
+ctx.font = '18px VCR OSD Mono Regular'
+ctx.fillText('Harry Potter quote here', 300, 150)
 
 let intervalId = 0;
  indervalId = setInterval(() => {

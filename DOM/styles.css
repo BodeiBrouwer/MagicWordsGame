@@ -40,3 +40,10 @@ body {
     justify-content: center;
     margin-top: 10%;
 }
+
+#myCanvas {
+    background-image: url('/MagicWordsGame/Images/Hogwarts.png');
+    background-size: 800, 450;
+    background-position: center;
+    background-size: cover;
+}
