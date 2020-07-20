@@ -13,31 +13,35 @@ const quotes = [
     'It\'s exciting, isn\'t it, breaking the rules?',
     'Or worse, expelled.',
     'Twitchy little ferret, aren\'t you, Malfoy?',
-    'I\'m hoping to do something good in the world',
+    'No, but I will write to your mother',
 
     'Blimey Harry',
     'You’re a little scary sometimes, you know that?',
     'When in doubt, go to the library.',
-    'Why couldn’t it be ‘follow the butterflies?',
+    'It looks more like a pig with hair, if you ask me',
     'It’s me. I’m extremely famous.',
 
-    'Words are our most inexhaustible source of magic.',
+    'Alas! Earwax.',
     'Of course it\s happening inside your head.',
     'One can never have enough socks',
     'There are all kinds of courage',
-    'Nitwit! Blubber! Oddment! Tweak!'
- ];
+    'Nitwit! Blubber! Oddment! Tweak!'];
 
 let parchmentY = -parchment.height;
 let quote1 = '';
 let quote2 = '';
 let bY = 2;
+let pickedQuote = '';
 
 function drawParchment(){ 
-    ctx.clearRect(250, 0, 300, canvas.height)
-     ctx.drawImage(parchment, 250, parchmentY, 300, 150);
+    ctx.clearRect(250, 0, 350, canvas.height)
+    ctx.drawImage(parchment, 250, parchmentY, 300, 150);
 
      if (parchmentY > canvas.height) {
+         let i;
+         for (i=0 ; i < 6 ; i++){
+            ctx.drawImage(parchment, 250, parchmentY, 300, 150);
+         } 
         alert('GAME OVER');
         clearInterval(intervalID1);
         location.reload();
@@ -47,12 +51,12 @@ function drawParchment(){
     }
  }
 
- function pickQuote(array){
-    quote = array[Math.floor(Math.random() * array.length)];
+  function pickQuote(array){
+    pickedQuote = array[Math.floor(Math.random() * array.length)];
 
-    let middle = Math.floor(quote.length / 2);
-    let before = quote.lastIndexOf(' ', middle);
-    var after = quote.indexOf(' ', middle + 1);
+    let middle = Math.floor(pickedQuote.length / 2);
+    let before = pickedQuote.lastIndexOf(' ', middle);
+    var after = pickedQuote.indexOf(' ', middle + 1);
 
     if (middle - before < after - middle) {
     middle = before;
@@ -60,16 +64,17 @@ function drawParchment(){
     middle = after;
     }   
 
-    quote1 = quote.substr(0, middle);
-    quote2 = quote.substr(middle + 1);
+    quote1 = pickedQuote.substr(0, middle);
+    quote2 = pickedQuote.substr(middle + 1);
 }
  
  function drawQuote() {
-     pickQuote(quotes)
-     ctx.font = '14px VCR OSD Mono Regular'
-     ctx.fillText(quote1, 300, parchmentY+70)
-     ctx.fillText(quote2, 300, parchmentY+90)  
+     ctx.font = '16px VCR OSD Mono Regular'
+     ctx.fillText(quote1, 305, parchmentY+70)
+     ctx.fillText(quote2, 305, parchmentY+90)  
  }
+
+ pickQuote(quotes)
 
  let intervalID1 = 0;
  intervalID1 = setInterval(() => {

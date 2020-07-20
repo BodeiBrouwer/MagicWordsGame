@@ -4,20 +4,13 @@ canvas.style.border = '2px solid black';
 canvas.style.backgroundColor = '#ffffff';
 
 
-let harry = new Image();
-harry.src = '/MagicWordsGame/Images/Harry pixel.png';
+let harry = document.querySelector('.harry');
 
-let ron = new Image();
-ron.src = '/MagicWordsGame/Images/Ron.png';
+let ron = document.querySelector('.ron');
 
-let hermione = new Image();
-hermione.src = '/MagicWordsGame/Images/hermione transparant.png';
+let hermione = document.querySelector('.hermione');
 
-let dumbledore = new Image();
-dumbledore.src = '/MagicWordsGame/Images/Dumbledore.png';
-
-let cauldron = new Image();
-cauldron.src = '/MagicWordsGame/Images/cauldron.gif'
+let dumbledore = document.querySelector('.dumbledore');
 
 let leftX = 30;
 let rightX = 630
@@ -27,14 +20,15 @@ let charHeight = 150;
 let charWidth = 120;
 let score = 0;
 
+ctx.font = '20px VCR OSD Mono Regular';
+ctx.fillText('Score: '+score, 50, 20);
+
 
 function draw(){ 
    ctx.drawImage(harry, leftX, topY, charHeight, charWidth);
     ctx.drawImage(hermione, leftX, bottomY, charHeight, charWidth);
     ctx.drawImage(ron, rightX, topY, charHeight, charWidth);
     ctx.drawImage(dumbledore, rightX, bottomY, charHeight, charWidth);
-    ctx.font = '20px VCR OSD Mono Regular';
-    ctx.fillText('Score: '+score, 50, 20);
 }
 
 
