@@ -1,5 +1,5 @@
 
-let body = document.querySelector('body');
+let body = document.getElementsByTagName('body');
 let splash = document.querySelector('.splash-screen');
 let game = document.createElement("div");
 let win = document.createElement("div");
@@ -39,8 +39,12 @@ function charClicked() {
     document.querySelectorAll('.char').forEach(item => {
         item.addEventListener('click', event => {
              if (event.target.classList.contains(characterQuoted)) {
+                clearInterval(intervalID)
+                ctx.clearRect(0, 0, canvas.width, canvas.height)
                  score++
-                 ctx.clearRect(250, 0, 350, canvas.height)
+
+                 parchmentY = -parchment.height;
+
                  pickQuote(quotes)
                  intervalID = setInterval(() => {
                      requestAnimationFrame(drawParchment);
@@ -48,6 +52,7 @@ function charClicked() {
                  }, 17)
              } else if (score === 5){
                  game.parentNode.removeChild(game);
+                 body.className = 'win-screen';
                  body.appendChild(win);
                  document.getElementById('play-again').addEventListener('click', () => {
                     alohomora()
@@ -55,6 +60,7 @@ function charClicked() {
                  clearInterval(intervalID);
              } else {
                  game.parentNode.removeChild(game);
+                 body.className = 'lose-screen';
                  body.appendChild(lose);
                  document.getElementById('try-again').addEventListener('click', () => {
                        alohomora()
@@ -69,16 +75,10 @@ function charClicked() {
 function alohomora() {
     if (document.body.contains(document.querySelector('.splash-screen'))) {
         splash.parentNode.removeChild(splash);
-    } 
-    if (document.body.contains(document.querySelector('.win-screen'))) {
-        win.parentNode.removeChild(win);
-    } 
-    if (document.body.contains(document.querySelector('.lose-screen'))){
-        lose.parentNode.removeChild(lose)
+        document.getElementById('body').className = 'game';
     }
     
     body.appendChild(game);
-
 
     startGame()
 
@@ -95,17 +95,6 @@ function alohomora() {
    charClicked()
 };
 
-
-
-
     document.getElementById('alohomora').addEventListener('click', () => {
         alohomora()
     })    
-// if (document.body.contains(document.querySelector('.win-screen'))) {
-//     document.getElementById('play-again').addEventListener('click', () => {
-//         alohomora()
-//     })
-// } 
-// if (document.body.contains(document.querySelector('.lose-screen'))){
-//   
-// };

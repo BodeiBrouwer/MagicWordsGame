@@ -1,6 +1,4 @@
 
-let parchment = new Image();
-parchment.src = '/MagicWordsGame/Images/parchment.png'
 
 const quotes = [
     'There’s No Need To Call Me Sir, Professor', 
@@ -27,7 +25,6 @@ const quotes = [
     'There are all kinds of courage',
     'Nitwit! Blubber! Oddment! Tweak!'];
 
-let parchmentY = -parchment.height;
 let quote1 = '';
 let quote2 = '';
 let bY = 2;
@@ -36,11 +33,12 @@ let pickedQuote = '';
 //This is parchment code
 
 function drawParchment(){ 
-    ctx.clearRect(250, 0, 350, canvas.height)
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
     ctx.drawImage(parchment, 250, parchmentY, 300, 150);
 
     if (parchmentY > canvas.height) {
         game.parentNode.removeChild(game);
+        body.className = 'lose-screen';
         body.appendChild(lose);
         document.getElementById('try-again').addEventListener('click', () => {
             alohomora()
