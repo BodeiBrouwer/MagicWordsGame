@@ -1,16 +1,22 @@
-let canvas = document.getElementById('myCanvas')
-let ctx = canvas.getContext('2d');
+let canvas = null;
+let ctx = null;
+let intervalID = 0;
+let score = 0;
+
+function startGame() {
+canvas = document.getElementById('myCanvas')
+ctx = canvas.getContext('2d');
 canvas.style.border = '2px solid black';
 canvas.style.backgroundColor = '#ffffff';
 
 
-let harry = document.querySelector('.harry');
+// let harry = document.querySelector('.harry');
 
-let ron = document.querySelector('.ron');
+// let ron = document.querySelector('.ron');
 
-let hermione = document.querySelector('.hermione');
+// let hermione = document.querySelector('.hermione');
 
-let dumbledore = document.querySelector('.dumbledore');
+// let dumbledore = document.querySelector('.dumbledore');
 
 let leftX = 30;
 let rightX = 630
@@ -18,12 +24,11 @@ let topY = 60;
 let bottomY = 270;
 let charHeight = 150;
 let charWidth = 120;
-let score = 0;
 
 ctx.font = '20px VCR OSD Mono Regular';
 ctx.fillText('Score: '+score, 50, 20);
 
-
+}
 // function draw(){ 
 //    ctx.drawImage(harry, leftX, topY, charHeight, charWidth);
 //     ctx.drawImage(hermione, leftX, bottomY, charHeight, charWidth);

@@ -21,14 +21,13 @@ body {
     margin-top: 35%;
 }
 
-.splash-background {
+.splash-screen {
     background: url("/MagicWordsGame/Images/gif.gif");
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     margin: -10px;
     background-position: center;
     background-size: cover;
-    position: relative;
 }
 
 #too-bad {
@@ -39,14 +38,13 @@ body {
     margin-top: 35%;
 }
 
-.loser-background {
+.lose-screen {
     background: url("/MagicWordsGame/Images/grim.jpg");
     width: 100%;
     height: 100%;
     margin: -10px;
     background-position: center;
     background-size: cover;
-    position: relative;
 }
 
 #won {
@@ -57,14 +55,13 @@ body {
     margin-top: 35%;
 }
 
-.win-background {
+.win-screen {
     background: url("/MagicWordsGame/Images/light sky.jpg");
     width: 100%;
     height: 100%;
     margin: -10px;
     background-position: center; 
     background-size: cover; 
-    position: relative;
 }
 
 .btn-secondary {
@@ -91,13 +88,13 @@ body {
     box-shadow: white;
     height: 150px;
     width: 120px;
+    border: none;
+    outline: none;
 }
 
 .char > img{
     height: 150px;
     width: 120px;
-    display: flex;
-    justify-content: space-between;
 }
 
 #buttons {

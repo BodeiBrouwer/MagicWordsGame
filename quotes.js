@@ -33,22 +33,26 @@ let quote2 = '';
 let bY = 2;
 let pickedQuote = '';
 
+//This is parchment code
+
 function drawParchment(){ 
     ctx.clearRect(250, 0, 350, canvas.height)
     ctx.drawImage(parchment, 250, parchmentY, 300, 150);
 
-     if (parchmentY > canvas.height) {
-         for (let i=0 ; i < 6 ; i++){
-            ctx.drawImage(parchment, 250, parchmentY, 300, 150);
-         } 
-         alert('GAME OVER');
-        clearInterval(intervalID1);
-        location.reload();
-    }
-    else {
-        parchmentY += bY;
-    }
- }
+    if (parchmentY > canvas.height) {
+        game.parentNode.removeChild(game);
+        body.appendChild(lose);
+        document.getElementById('try-again').addEventListener('click', () => {
+            alohomora()
+        })
+        clearInterval(intervalID);
+   } else {
+       parchmentY += bY;
+   }
+}
+
+
+ // This is all quote code
 
   function pickQuote(array){
     pickedQuote = array[Math.floor(Math.random() * array.length)];
@@ -72,11 +76,3 @@ function drawParchment(){
      ctx.fillText(quote1, 305, parchmentY+70)
      ctx.fillText(quote2, 305, parchmentY+90)  
  }
-
- pickQuote(quotes)
-
- let intervalID1 = 0;
- intervalID1 = setInterval(() => {
-    requestAnimationFrame(drawParchment);
-    requestAnimationFrame(drawQuote);
-}, 17)
