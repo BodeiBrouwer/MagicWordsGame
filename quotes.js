@@ -38,11 +38,10 @@ function drawParchment(){
     ctx.drawImage(parchment, 250, parchmentY, 300, 150);
 
      if (parchmentY > canvas.height) {
-         let i;
-         for (i=0 ; i < 6 ; i++){
+         for (let i=0 ; i < 6 ; i++){
             ctx.drawImage(parchment, 250, parchmentY, 300, 150);
          } 
-        alert('GAME OVER');
+         alert('GAME OVER');
         clearInterval(intervalID1);
         location.reload();
     }

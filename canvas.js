@@ -24,15 +24,15 @@ ctx.font = '20px VCR OSD Mono Regular';
 ctx.fillText('Score: '+score, 50, 20);
 
 
-function draw(){ 
-   ctx.drawImage(harry, leftX, topY, charHeight, charWidth);
-    ctx.drawImage(hermione, leftX, bottomY, charHeight, charWidth);
-    ctx.drawImage(ron, rightX, topY, charHeight, charWidth);
-    ctx.drawImage(dumbledore, rightX, bottomY, charHeight, charWidth);
-}
+// function draw(){ 
+//    ctx.drawImage(harry, leftX, topY, charHeight, charWidth);
+//     ctx.drawImage(hermione, leftX, bottomY, charHeight, charWidth);
+//     ctx.drawImage(ron, rightX, topY, charHeight, charWidth);
+//     ctx.drawImage(dumbledore, rightX, bottomY, charHeight, charWidth);
+// }
 
 
-let intervalId = 0;
- indervalId = setInterval(() => {
-    requestAnimationFrame(draw)
- },0)
+// let intervalId = 0;
+//  indervalId = setInterval(() => {
+//     requestAnimationFrame(draw)
+//  },0)

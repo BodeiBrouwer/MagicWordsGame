@@ -1,23 +1,23 @@
-let character = '';
+let characterQuoted = '';
 
 function determineChar(array, i){
 
     if (array.indexOf(i) < 5){
-        character = 'harry';
+        characterQuoted = 'harry';
     }
     else if (array.indexOf(i) < 10){
-        character = 'hermione';
+        characterQuoted = 'hermione';
     }
     else if (array.indexOf(i) < 15){
-        character = 'ron';
+        characterQuoted = 'ron';
     }
     else if (array.indexOf(i) < 20){
-        character = 'dumbledore';
+        characterQuoted = 'dumbledore';
     }
 }
 
-function winOrLose(char, img){
-    if (img.classList.contains(char)) {
+function winOrLose(charName, img){
+    if (img.classList.contains(charName)) {
        score++
     } else {
         alert('GAME OVER');
@@ -28,5 +28,5 @@ function winOrLose(char, img){
 
 function character() {
     determineChar(quotes, i);
-    winOrLose(character, img)
+    winOrLose(characterQuoted, char)
 }
