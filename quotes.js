@@ -29,6 +29,7 @@ let quote1 = '';
 let quote2 = '';
 let bY = 2;
 let pickedQuote = '';
+let answer = [];
 
 //This is parchment code
 
@@ -53,8 +54,12 @@ function drawParchment(){
  // This is all quote code
 
   function pickQuote(array){
+    
     pickedQuote = array[Math.floor(Math.random() * array.length)];
-
+    if(!answer.some(an => an === pickedQuote)){
+      answer.push(pickedQuote);
+    }
+    
     let middle = Math.floor(pickedQuote.length / 2);
     let before = pickedQuote.lastIndexOf(' ', middle);
     var after = pickedQuote.indexOf(' ', middle + 1);

@@ -51,7 +51,7 @@ function loopQuotes(){
      }, 19)
 
      determineChar(quotes, pickedQuote)
-     console.log(characterQuoted)
+
 }
 
 
@@ -61,8 +61,7 @@ function charClicked() {
 
 
             item.addEventListener('click', event => {
-                console.log(event.target)
-                 if (score === 5) {
+                 if (score === 4) {
                     game.parentNode.removeChild(game);
                     container.appendChild(win);
                     document.getElementById('body').className = 'win-screen';
@@ -74,7 +73,6 @@ function charClicked() {
                  } else if (event.target.classList.contains(characterQuoted)){
                     score++
                     loopQuotes()
-                    console.log(score)
                  } else {
                      game.parentNode.removeChild(game);
                      container.appendChild(lose);
