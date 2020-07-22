@@ -52,39 +52,45 @@ function loopQuotes(){
 
      determineChar(quotes, pickedQuote)
      console.log(characterQuoted)
-
-     charClicked()
 }
+
+
 
 function charClicked() {
     document.querySelectorAll('.char').forEach(item => {
-        item.addEventListener('click', event => {
-            console.log(event.target)
-             if (score === 5) {
-                game.parentNode.removeChild(game);
-                container.appendChild(win);
-                document.getElementById('body').className = 'win-screen';
-                document.getElementById('play-again').addEventListener('click', () => {
-                   alohomora()
-               })
-                clearInterval(intervalID);
-             } else if (event.target.classList.contains(characterQuoted)){
-                score++
-                loopQuotes()
-                console.log(score)
-             } else {
-                 game.parentNode.removeChild(game);
-                 container.appendChild(lose);
-                 document.getElementById('body').className = 'lose-screen';
-                 document.getElementById('try-again').addEventListener('click', () => {
+
+
+            item.addEventListener('click', event => {
+                console.log(event.target)
+                 if (score === 5) {
+                    game.parentNode.removeChild(game);
+                    container.appendChild(win);
+                    document.getElementById('body').className = 'win-screen';
+    
+                    document.getElementById('play-again').addEventListener('click', () => {
                        alohomora()
-                })
-                 clearInterval(intervalID);
-             }
-         })
+                   })
+                    clearInterval(intervalID);
+                 } else if (event.target.classList.contains(characterQuoted)){
+                    score++
+                    loopQuotes()
+                    console.log(score)
+                 } else {
+                     game.parentNode.removeChild(game);
+                     container.appendChild(lose);
+                     document.getElementById('body').className = 'lose-screen';
+    
+                     document.getElementById('try-again').addEventListener('click', () => {
+                           alohomora()
+                    })
+                     clearInterval(intervalID);
+                 }
+             })
+
      })
 };
 
+let firstTime = true
   function alohomora() {
     if (document.body.contains(document.querySelector('.splash-screen'))) {
         splash.parentNode.removeChild(splash);
@@ -100,12 +106,12 @@ function charClicked() {
     document.getElementById('body').className = 'game';
 
     startGame();
-
+    firstTime ? charClicked() : null
+    firstTime = false
     score = 0;
-
     loopQuotes();
 };
 
-    document.getElementById('alohomora').addEventListener('click', () => {
-        alohomora()
-    })    
+document.getElementById('alohomora').addEventListener('click', () => {
+    alohomora()
+})    
