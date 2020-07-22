@@ -15,6 +15,7 @@ canvas.style.backgroundColor = '#ffffff';
 
 ctx.clearRect(250, 0, 350, canvas.height);
 
+score = 0;
 parchmentY = -parchment.height;
 ctx.font = '20px VCR OSD Mono Regular';
 ctx.fillText('Score: '+score, 50, 20);

@@ -18,7 +18,7 @@ body {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin-top: 35%;
+    margin-top: 15%;
 }
 
 .splash-screen {
@@ -34,7 +34,7 @@ body {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin-top: 35%;
+    margin-top: 15%;
 }
 
 .lose-screen {
@@ -50,7 +50,7 @@ body {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin-top: 35%;
+    margin-top: 15%;
 }
 
 .win-screen {

@@ -1,10 +1,10 @@
 
 let body = document.getElementsByTagName('body');
-let splash = document.querySelector('.splash-screen');
+let container = document.getElementById('container');
+let splash = document.querySelector('.splash');
 let game = document.createElement("div");
 let win = document.createElement("div");
 let lose = document.createElement("div");
-
 
 game.className = "canvas";
 game.innerHTML = `
@@ -17,6 +17,7 @@ game.innerHTML = `
     <button class="char dumbledore"><img class="dumbledore" src="/MagicWordsGame/Images/Dumbledore.png" alt="Dumbledore"></button>
 </div>
 `;
+
 lose.className = "lose-screen";
 lose.innerHTML = `
     <div id="too-bad">
@@ -35,64 +36,71 @@ win.innerHTML = `
     </section>
 `;
 
+function loopQuotes(){
+    clearInterval(intervalID)
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+    parchmentY = -parchment.height;
+
+    pickQuote(quotes)
+    intervalID = setInterval(() => {
+         requestAnimationFrame(drawParchment);
+         requestAnimationFrame(drawQuote);
+     }, 19)
+
+     determineChar(quotes, pickedQuote)
+
+     charClicked()
+}
+
 function charClicked() {
     document.querySelectorAll('.char').forEach(item => {
         item.addEventListener('click', event => {
-             if (event.target.classList.contains(characterQuoted)) {
-                clearInterval(intervalID)
-                ctx.clearRect(0, 0, canvas.width, canvas.height)
-                 score++
-
-                 parchmentY = -parchment.height;
-
-                 pickQuote(quotes)
-                 intervalID = setInterval(() => {
-                     requestAnimationFrame(drawParchment);
-                     requestAnimationFrame(drawQuote);
-                 }, 17)
-             } else if (score === 5){
-                 game.parentNode.removeChild(game);
-                 body.className = 'win-screen';
-                 body.appendChild(win);
-                 document.getElementById('play-again').addEventListener('click', () => {
-                    alohomora()
-                })
-                 clearInterval(intervalID);
+            console.log(characterQuoted)
+             if (score === 5) {
+                game.parentNode.removeChild(game);
+                container.appendChild(win);
+                document.getElementById('body').className = 'win-screen';
+                document.getElementById('play-again').addEventListener('click', () => {
+                   alohomora()
+               })
+                clearInterval(intervalID);
+             } else if (event.target.classList.contains(characterQuoted)){
+                score++
+                loopQuotes()
+                console.log(score)
              } else {
                  game.parentNode.removeChild(game);
-                 body.className = 'lose-screen';
-                 body.appendChild(lose);
+                 container.appendChild(lose);
+                 document.getElementById('body').className = 'lose-screen';
                  document.getElementById('try-again').addEventListener('click', () => {
                        alohomora()
                 })
                  clearInterval(intervalID);
-
              }
          })
      })
 };
 
-function alohomora() {
+  function alohomora() {
     if (document.body.contains(document.querySelector('.splash-screen'))) {
         splash.parentNode.removeChild(splash);
-        document.getElementById('body').className = 'game';
+    } 
+    if (document.body.contains(document.querySelector('.win-screen'))) {
+        win.parentNode.removeChild(win);
+    } 
+    if (document.body.contains(document.querySelector('.lose-screen'))){
+        lose.parentNode.removeChild(lose)
     }
-    
-    body.appendChild(game);
 
-    startGame()
+    container.appendChild(game);
+    document.getElementById('body').className = 'game';
 
-    pickQuote(quotes)
+    startGame();
 
-    intervalID = setInterval(() => {
-       requestAnimationFrame(drawParchment);
-       requestAnimationFrame(drawQuote);
-   }, 17)
-    
+    score = 0;
 
-   determineChar(quotes, pickedQuote)
-
-   charClicked()
+    loopQuotes();
 };
 
     document.getElementById('alohomora').addEventListener('click', () => {

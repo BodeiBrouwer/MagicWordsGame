@@ -38,8 +38,8 @@ function drawParchment(){
 
     if (parchmentY > canvas.height) {
         game.parentNode.removeChild(game);
-        body.className = 'lose-screen';
-        body.appendChild(lose);
+        container.appendChild(lose);
+        document.getElementById('body').className = 'lose-screen';
         document.getElementById('try-again').addEventListener('click', () => {
             alohomora()
         })
