@@ -29,8 +29,7 @@ let quote1 = '';
 let quote2 = '';
 let bY = 2;
 let pickedQuote = '';
-let answer = [];
-
+let arrayOfIndexes = []
 //This is parchment code
 
 function drawParchment(){ 
@@ -51,14 +50,21 @@ function drawParchment(){
 }
 
 
+    function getRandomNumber(array){
+        return Math.floor(Math.random() * array.length)
+    }
+
  // This is all quote code
 
   function pickQuote(array){
-    
-    pickedQuote = array[Math.floor(Math.random() * array.length)];
-    if(!answer.some(an => an === pickedQuote)){
-      answer.push(pickedQuote);
+     
+    let index = getRandomNumber(array)
+
+    if (arrayOfIndexes.includes(index)){
+        return pickQuote(array)
     }
+    arrayOfIndexes.push(index) 
+    pickedQuote = array[index];
     
     let middle = Math.floor(pickedQuote.length / 2);
     let before = pickedQuote.lastIndexOf(' ', middle);

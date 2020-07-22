@@ -6,8 +6,10 @@ let game = document.createElement("div");
 let win = document.createElement("div");
 let lose = document.createElement("div");
 
+
 game.className = "canvas";
 game.innerHTML = `
+<span id="countdown">5</span>
 <canvas id="myCanvas" width="800" height="450">
 </canvas>
 <div id="buttons">
@@ -102,6 +104,14 @@ let firstTime = true
 
     container.appendChild(game);
     document.getElementById('body').className = 'game';
+
+    let seconds = document.getElementById("countdown").textContent;
+    
+    let countdown = setInterval(function() {
+        seconds--;
+        document.getElementById("countdown").textContent = seconds;
+        if (seconds <= 0) clearInterval(countdown);
+    }, 1000);
 
     startGame();
     firstTime ? charClicked() : null
