@@ -15,10 +15,13 @@ canvas.style.backgroundColor = '#ffffff';
 
 ctx.clearRect(250, 0, 350, canvas.height);
 
+console.clear();
+
 score = 0;
-parchmentY = -parchment.height;
 ctx.font = '20px VCR OSD Mono Regular';
 ctx.fillText('Score: '+score, 50, 20);
+
+parchmentY = -parchment.height;
 }
 
 // let harry = document.querySelector('.harry');

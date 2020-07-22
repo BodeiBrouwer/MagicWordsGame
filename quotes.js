@@ -37,13 +37,13 @@ function drawParchment(){
     ctx.drawImage(parchment, 250, parchmentY, 300, 150);
 
     if (parchmentY > canvas.height) {
-        game.parentNode.removeChild(game);
-        container.appendChild(lose);
-        document.getElementById('body').className = 'lose-screen';
-        document.getElementById('try-again').addEventListener('click', () => {
-            alohomora()
-        })
-        clearInterval(intervalID);
+                 game.parentNode.removeChild(game);
+                 container.appendChild(lose);
+                 document.getElementById('body').className = 'lose-screen';
+                 document.getElementById('try-again').addEventListener('click', () => {
+                       alohomora()
+                })
+                 clearInterval(intervalID);
    } else {
        parchmentY += bY;
    }

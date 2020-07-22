@@ -38,9 +38,11 @@ win.innerHTML = `
 
 function loopQuotes(){
     clearInterval(intervalID)
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     parchmentY = -parchment.height;
+    ctx.font = '20px VCR OSD Mono Regular';
+    ctx.fillText('Score: '+score, 50, 20);
 
     pickQuote(quotes)
     intervalID = setInterval(() => {
@@ -49,6 +51,7 @@ function loopQuotes(){
      }, 19)
 
      determineChar(quotes, pickedQuote)
+     console.log(characterQuoted)
 
      charClicked()
 }
@@ -56,7 +59,7 @@ function loopQuotes(){
 function charClicked() {
     document.querySelectorAll('.char').forEach(item => {
         item.addEventListener('click', event => {
-            console.log(characterQuoted)
+            console.log(event.target)
              if (score === 5) {
                 game.parentNode.removeChild(game);
                 container.appendChild(win);
