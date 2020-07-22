@@ -91,5 +91,8 @@ The winScreen only shows when the game has been won and the gameOverScreen shows
 
 [Trello board](https://trello.com/b/U0Bc82Rr/magic-words-game)
 
+[Game](https://bodeibrouwer.github.io/MagicWordsGame/)
+
+[Presentation](https://docs.google.com/presentation/d/1SiCl2sVYUwQeNLDJqMlDch4BydF5qTF72Z7lZDfVKTk/edit?usp=sharing)
 
 
