@@ -1,5 +1,3 @@
-let characterQuoted = '';
-
 function determineChar(array, i){
     if (array.indexOf(i) < 5){
         characterQuoted = 'harry';

@@ -1,11 +1,11 @@
-
 let body = document.getElementsByTagName('body');
 let container = document.getElementById('container');
 let splash = document.querySelector('.splash');
 let game = document.createElement("div");
+let gameDark = document.createElement("div");
 let win = document.createElement("div");
 let lose = document.createElement("div");
-let music = new Audio ('/MagicWordsGame/Images/theme song.mp3')
+let music = new Audio('/MagicWordsGame/Images/theme song.mp3')
 
 game.className = "canvas";
 game.innerHTML = `
@@ -39,25 +39,25 @@ win.innerHTML = `
 `;
 
 function setHouse(chosenHouse) {
-    switch(chosenHouse) {
+    switch (chosenHouse) {
         case "Gryffindor":
             document.getElementById('body').className = 'game-gryf';
-          break;
+            break;
         case "Slytherin":
             document.getElementById('body').className = 'game-slyth';
-          break;
+            break;
         case "Hufflepuff":
             document.getElementById('body').className = 'game-huf';
-          break;
+            break;
         case "Ravenclaw":
             document.getElementById('body').className = 'game-rav';
-          break;
+            break;
         default:
             document.getElementById('body').className = 'game-gryf';
-      }
+    }
 }
 
-function loopQuotes(){;
+function loopQuotes() {
     clearInterval(intervalID)
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -65,57 +65,56 @@ function loopQuotes(){;
 
     pickQuote(quotes)
     intervalID = setInterval(() => {
-         requestAnimationFrame(drawParchment);
-         requestAnimationFrame(drawQuote);
-     }, 19)
+        requestAnimationFrame(drawParchment);
+        requestAnimationFrame(drawQuote);
+    }, 19)
 
-     determineChar(quotes, pickedQuote)
+    determineChar(quotes, pickedQuote)
 
 }
-
 
 
 function charClicked() {
     document.querySelectorAll('.char').forEach(item => {
 
 
-            item.addEventListener('click', event => {
-                 if (score === 4) {
-                    game.parentNode.removeChild(game);
-                    container.appendChild(win);
-                    document.getElementById('body').className = 'win-screen';
-    
-                    document.getElementById('play-again').addEventListener('click', () => {
-                       alohomora()
-                   })
-                    clearInterval(intervalID);
-                 } else if (event.target.classList.contains(characterQuoted)){
-                    score++
-                    loopQuotes()
-                 } else {
-                     game.parentNode.removeChild(game);
-                     container.appendChild(lose);
-                     document.getElementById('body').className = 'lose-screen';
-    
-                     document.getElementById('try-again').addEventListener('click', () => {
-                           alohomora()
-                    })
-                     clearInterval(intervalID);
-                 }
-             })
+        item.addEventListener('click', event => {
+            if (score === 4) {
+                game.parentNode.removeChild(game);
+                container.appendChild(win);
+                document.getElementById('body').className = 'win-screen';
 
-     })
+                document.getElementById('play-again').addEventListener('click', () => {
+                    alohomora()
+                })
+                clearInterval(intervalID);
+            } else if (event.target.classList.contains(characterQuoted)) {
+                score++
+                loopQuotes()
+            } else {
+                game.parentNode.removeChild(game);
+                container.appendChild(lose);
+                document.getElementById('body').className = 'lose-screen';
+
+                document.getElementById('try-again').addEventListener('click', () => {
+                    alohomora()
+                })
+                clearInterval(intervalID);
+            }
+        })
+
+    })
 };
 
 function countdown(callback) {
     let seconds = document.getElementById("countdown").textContent;
-    let countdown = setInterval(function() {
+    let countdown = setInterval(function () {
         seconds--;
         document.getElementById("countdown").textContent = seconds;
         if (seconds <= 0) {
-        clearInterval(countdown);
-        document.getElementById("countdown").textContent = "";
-        callback();
+            clearInterval(countdown);
+            document.getElementById("countdown").textContent = "";
+            callback();
         }
     }, 1000);
 }
@@ -131,16 +130,16 @@ function firstQuote() {
 
 let firstTime = true
 
-  function alohomora() {
+function alohomora() {
     if (document.body.contains(document.querySelector('.splash-screen'))) {
         let currentHouse = document.querySelector(".dropdown")
         house = currentHouse.value
         splash.parentNode.removeChild(splash);
-    } 
+    }
     if (document.body.contains(document.querySelector('.win-screen'))) {
         win.parentNode.removeChild(win);
-    } 
-    if (document.body.contains(document.querySelector('.lose-screen'))){
+    }
+    if (document.body.contains(document.querySelector('.lose-screen'))) {
         lose.parentNode.removeChild(lose)
     }
 
@@ -154,4 +153,101 @@ let firstTime = true
 
 document.getElementById('alohomora').addEventListener('click', () => {
     alohomora()
-})    
+})
+
+
+// All dark code
+
+gameDark.className = "canvas";
+gameDark.innerHTML = `
+<h1 id="countdown">3</h1>
+<canvas id="myDarkCanvas" width="800" height="450">
+</canvas>
+<div id="buttons">
+    <button class="char malfoy"><img class="malfoy" src="/MagicWordsGame/Dark code/Dark images/malfoy.png" alt="Malfoy""></button>
+    <button class="char snape"><img class="snape" src="/MagicWordsGame/Dark code/Dark images/snape.png" alt="Snape"></button>
+    <button class="char voldemort"><img class="voldemort" src="/MagicWordsGame/Dark code/Dark images/voldemort.png" alt="Voldemort"></button>
+    <button class="char umbridge"><img class="umbridge" src="/MagicWordsGame/Dark code/Dark images/umbridge.png" alt="Umbridge"></button>
+</div>
+`;
+
+function loopDarkQuotes() {
+    clearInterval(intervalID)
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    parchmentY = -parchment.height;
+
+    pickDarkQuote(darkQuotes)
+    intervalID = setInterval(() => {
+        requestAnimationFrame(drawDarkParchment);
+        requestAnimationFrame(drawDarkQuote);
+    }, 19)
+
+    determineDarkChar(darkQuotes, pickedDarkQuote)
+    console.log(characterQuoted);
+}
+
+function darkCharClicked() {
+    document.querySelectorAll('.char').forEach(item => {
+
+
+        item.addEventListener('click', event => {
+            if (score === 4) {
+                gameDark.parentNode.removeChild(gameDark);
+                container.appendChild(win);
+                document.getElementById('body').className = 'win-screen';
+
+                document.getElementById('play-again').addEventListener('click', () => {
+                    playDark()
+                })
+                clearInterval(intervalID);
+            } else if (event.target.classList.contains(characterQuoted)) {
+                score++
+                loopDarkQuotes()
+            } else {
+                gameDark.parentNode.removeChild(gameDark);
+                container.appendChild(lose);
+                document.getElementById('body').className = 'lose-screen';
+
+                document.getElementById('try-again').addEventListener('click', () => {
+                    playDark()
+                })
+                clearInterval(intervalID);
+            }
+        })
+
+    })
+};
+
+function firstDarkQuote() {
+    startDarkGame();
+    firstTime ? darkCharClicked() : null
+    firstTime = false
+    score = 0;
+    loopDarkQuotes()
+}
+
+function playDark() {
+    if (document.body.contains(document.querySelector('.splash-screen'))) {
+        let currentHouse = document.querySelector(".dropdown")
+        house = currentHouse.value
+        splash.parentNode.removeChild(splash);
+    }
+    if (document.body.contains(document.querySelector('.win-screen'))) {
+        win.parentNode.removeChild(win);
+    }
+    if (document.body.contains(document.querySelector('.lose-screen'))) {
+        lose.parentNode.removeChild(lose)
+    }
+
+    container.appendChild(gameDark);
+
+    setHouse(house);
+
+    countdown(firstDarkQuote);
+
+}
+
+document.getElementById('dark-game').addEventListener('click', () => {
+    playDark()
+})

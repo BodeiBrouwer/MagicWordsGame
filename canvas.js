@@ -2,15 +2,12 @@ let canvas = null;
 let ctx = null;
 let intervalID = 0;
 let score = 0;
-let house= 'gryf';
+let house= '';
+let characterQuoted = '';
 
 let parchment = new Image();
 parchment.src = '/MagicWordsGame/Images/parchment.png'
 let parchmentY = -parchment.height;
-
-// function setBackground() {
-//     switch
-// }
 
 function startGame() {
 canvas = document.getElementById('myCanvas')
@@ -27,6 +24,22 @@ ctx.font = '20px VCR OSD Mono Regular';
 
 parchmentY = -parchment.height;
 }
+
+function startDarkGame() {
+    canvas = document.getElementById('myDarkCanvas')
+    ctx = canvas.getContext('2d');
+    canvas.style.border = '2px solid black';
+    canvas.style.backgroundColor = '#ffffff';
+    
+    ctx.clearRect(250, 0, 350, canvas.height);
+    
+    console.clear();
+    
+    score = 0;
+    ctx.font = '20px VCR OSD Mono Regular';
+    
+    parchmentY = -parchment.height;
+    }
 
 // let harry = document.querySelector('.harry');
 

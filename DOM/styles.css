@@ -90,6 +90,13 @@ body {
     background-size: cover;
 }
 
+#myDarkCanvas {
+    background-image: url('/MagicWordsGame/Dark code/Dark images/dark hogwarts.png');
+    background-size: 800, 450;
+    background-position: center;
+    background-size: cover;
+}
+
 .char {
     background-color: rgb(255, 255, 255, 0.0);
     border-color:  rgb(255, 255, 255, 0.0);
@@ -106,6 +113,7 @@ body {
 }
 
 #buttons {
+    cursor: url("/MagicWordsGame/Images/cursor.cur"), default;
     display: flex;
     flex-direction: column;
     justify-content: space-between; 
