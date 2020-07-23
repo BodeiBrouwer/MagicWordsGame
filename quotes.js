@@ -30,6 +30,7 @@ let quote2 = '';
 let bY = 2;
 let pickedQuote = '';
 let arrayOfIndexes = []
+
 //This is parchment code
 
 function drawParchment(){ 

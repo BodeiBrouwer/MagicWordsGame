@@ -5,11 +5,11 @@ let splash = document.querySelector('.splash');
 let game = document.createElement("div");
 let win = document.createElement("div");
 let lose = document.createElement("div");
-
+let music = new Audio ('/MagicWordsGame/Images/theme song.mp3')
 
 game.className = "canvas";
 game.innerHTML = `
-<span id="countdown">5</span>
+<h1 id="countdown">3</h1>
 <canvas id="myCanvas" width="800" height="450">
 </canvas>
 <div id="buttons">
@@ -38,13 +38,30 @@ win.innerHTML = `
     </section>
 `;
 
-function loopQuotes(){
+function setHouse(chosenHouse) {
+    switch(chosenHouse) {
+        case "Gryffindor":
+            document.getElementById('body').className = 'game-gryf';
+          break;
+        case "Slytherin":
+            document.getElementById('body').className = 'game-slyth';
+          break;
+        case "Hufflepuff":
+            document.getElementById('body').className = 'game-huf';
+          break;
+        case "Ravenclaw":
+            document.getElementById('body').className = 'game-rav';
+          break;
+        default:
+            document.getElementById('body').className = 'game-gryf';
+      }
+}
+
+function loopQuotes(){;
     clearInterval(intervalID)
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     parchmentY = -parchment.height;
-    ctx.font = '20px VCR OSD Mono Regular';
-    ctx.fillText('Score: '+score, 50, 20);
 
     pickQuote(quotes)
     intervalID = setInterval(() => {
@@ -90,9 +107,34 @@ function charClicked() {
      })
 };
 
+function countdown(callback) {
+    let seconds = document.getElementById("countdown").textContent;
+    let countdown = setInterval(function() {
+        seconds--;
+        document.getElementById("countdown").textContent = seconds;
+        if (seconds <= 0) {
+        clearInterval(countdown);
+        document.getElementById("countdown").textContent = "";
+        callback();
+        }
+    }, 1000);
+}
+
+function firstQuote() {
+    startGame();
+    firstTime ? charClicked() : null
+    firstTime = false
+    score = 0;
+    loopQuotes();
+};
+
+
 let firstTime = true
+
   function alohomora() {
     if (document.body.contains(document.querySelector('.splash-screen'))) {
+        let currentHouse = document.querySelector(".dropdown")
+        house = currentHouse.value
         splash.parentNode.removeChild(splash);
     } 
     if (document.body.contains(document.querySelector('.win-screen'))) {
@@ -103,21 +145,11 @@ let firstTime = true
     }
 
     container.appendChild(game);
-    document.getElementById('body').className = 'game';
 
-    let seconds = document.getElementById("countdown").textContent;
-    
-    let countdown = setInterval(function() {
-        seconds--;
-        document.getElementById("countdown").textContent = seconds;
-        if (seconds <= 0) clearInterval(countdown);
-    }, 1000);
+    setHouse(house);
 
-    startGame();
-    firstTime ? charClicked() : null
-    firstTime = false
-    score = 0;
-    loopQuotes();
+    countdown(firstQuote);
+
 };
 
 document.getElementById('alohomora').addEventListener('click', () => {

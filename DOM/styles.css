@@ -18,7 +18,7 @@ body {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin-top: 15%;
+    margin-top: 15vh;
 }
 
 .splash-screen {
@@ -34,7 +34,7 @@ body {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin-top: 15%;
+    margin-top: 15vh;
 }
 
 .lose-screen {
@@ -50,7 +50,7 @@ body {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin-top: 15%;
+    margin-top: 15vh;
 }
 
 .win-screen {
@@ -66,10 +66,21 @@ body {
     letter-spacing: 2px;
 }
 
+
+.alert {
+    display: flex;
+    position: absolute center;
+    height: 100px;
+    width: 100px;
+    align-items: center;
+    justify-content: center;
+    padding: auto;
+}
+
 .canvas {
     display: flex;
     justify-content: center;
-    margin-top: 10%;
+    margin-top: 10vh;
 }
 
 #myCanvas {
@@ -80,9 +91,9 @@ body {
 }
 
 .char {
-    background-color: white;
-    border-color: white;
-    box-shadow: white;
+    background-color: rgb(255, 255, 255, 0.0);
+    border-color:  rgb(255, 255, 255, 0.0);
+    box-shadow:  rgb(255, 255, 255, 0.0);
     height: 150px;
     width: 120px;
     border: none;
@@ -98,4 +109,20 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between; 
+}
+
+.game-gryf {
+    background-image: url('/MagicWordsGame/Images/backgrounds/gryffindor.png');opacity: 0,2;
+}
+
+.game-rav {
+    background-image: url('/MagicWordsGame/Images/backgrounds/ravenclaw.png');opacity: 0,2;
+}
+
+.game-huf {
+    background-image: url('/MagicWordsGame/Images/backgrounds/hufflepuff.png');opacity: 0,2;
+}
+
+.game-slyth {
+    background-image: url('/MagicWordsGame/Images/backgrounds/slytherin.png');opacity: 0,2;
 }
