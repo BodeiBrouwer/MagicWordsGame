@@ -35,7 +35,7 @@ let arrayOfIndexes = []
 
 function drawParchment(){ 
     ctx.clearRect(0, 0, canvas.width, canvas.height)
-    ctx.drawImage(parchment, 250, parchmentY, 300, 150);
+    ctx.drawImage(parchment, 245, parchmentY, 350, 150);
 
     if (parchmentY > canvas.height) {
                  game.parentNode.removeChild(game);

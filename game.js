@@ -5,7 +5,7 @@ let game = document.createElement("div");
 let gameDark = document.createElement("div");
 let win = document.createElement("div");
 let lose = document.createElement("div");
-let music = new Audio('/MagicWordsGame/Images/theme song.mp3')
+let evilLaugh = new Audio('/MagicWordsGame/Images/BELLATRIX LESTRANGE SCENES (HD) (mp3cut.net).mp3')
 
 game.className = "canvas";
 game.innerHTML = `

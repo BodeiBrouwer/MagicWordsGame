@@ -66,6 +66,13 @@ body {
     letter-spacing: 2px;
 }
 
+#countdown {
+    color: white;
+    font-size: 100px;
+    top: 35%;
+    position: fixed;
+}
+
 
 .alert {
     display: flex;
