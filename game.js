@@ -5,23 +5,31 @@ let game = document.createElement("div");
 let gameDark = document.createElement("div");
 let win = document.createElement("div");
 let lose = document.createElement("div");
-let evilLaugh = new Audio('/MagicWordsGame/Images/BELLATRIX LESTRANGE SCENES (HD) (mp3cut.net).mp3')
+let speaker = document.getElementById('speaker');
+let muting = document.createElement("img");
+let soundButton = document.getElementById('sound');
+let evilLaugh = new Audio('/MagicWordsGame/Images/BELLATRIX LESTRANGE SCENES (HD) (mp3cut.net).mp3');
+let tenPoints = new Audio('/MagicWordsGame/Images/ten points.wav')
+
+mute.classname = "muted";
+mute.src = ('/MagicWordsGame/Images/mute.png');
 
 game.className = "canvas";
 game.innerHTML = `
-<h1 id="countdown">3</h1>
-<canvas id="myCanvas" width="800" height="450">
-</canvas>
-<div id="buttons">
-    <button class="char harry"><img class="harry" src="/MagicWordsGame/Images/Harry pixel.png" alt="Harry Potter"></button>
-    <button class="char hermione"><img class="hermione" src="/MagicWordsGame/Images/hermione transparant.png" alt="Hermione Granger"></button>
-    <button class="char ron"><img class="ron" src="/MagicWordsGame/Images/Ron.png" alt="Ron Weasley"></button>
-    <button class="char dumbledore"><img class="dumbledore" src="/MagicWordsGame/Images/Dumbledore.png" alt="Dumbledore"></button>
-</div>
+    <button id="sound"><img id="speaker" class='playing' src='/MagicWordsGame/Images/sound.png' alt='play'></button>
+    <h1 id="countdown">3</h1>
+    <canvas id="myCanvas" width="800" height="450">
+    </canvas>
+    <div id="buttons">
+        <button class="char harry"><img class="harry" src="/MagicWordsGame/Images/Harry pixel.png" alt="Harry Potter"></button>
+        <button class="char hermione"><img class="hermione" src="/MagicWordsGame/Images/hermione transparant.png" alt="Hermione Granger"></button>
+        <button class="char ron"><img class="ron" src="/MagicWordsGame/Images/Ron.png" alt="Ron Weasley"></button>
+        <button class="char dumbledore"><img class="dumbledore" src="/MagicWordsGame/Images/Dumbledore.png" alt="Dumbledore"></button>
+    </div>
 `;
 
 lose.className = "lose-screen";
-lose.innerHTML = `
+lose.innerHTML = `   
     <div id="too-bad">
         <img src="/MagicWordsGame/Images/game over.png" alt="Game Over">
         <h1>Did you just see the grim? <br> Because you're dead, mate.</h1>
@@ -37,6 +45,20 @@ win.innerHTML = `
         <button id="play-again" type="button" class="btn btn-secondary">Again!</button>
     </section>
 `;
+
+function mute() {
+    if (speaker.classList.contains('playing')) {
+        evilLaugh.muted = true;
+        tenPoints.muted = true;
+        speaker.parentNode.removeChild(speaker);
+        soundButton.appendChild(muting);
+    } else {
+        evilLaugh.muted = false;
+        tenPoints.muted = false;
+        muting.parentNode.removeChild(muting);
+        soundButton.appendChild(speaker);
+    }
+}
 
 function setHouse(chosenHouse) {
     switch (chosenHouse) {
@@ -89,9 +111,11 @@ function charClicked() {
                 })
                 clearInterval(intervalID);
             } else if (event.target.classList.contains(characterQuoted)) {
-                score++
-                loopQuotes()
+                tenPoints.play();
+                score++;
+                loopQuotes();
             } else {
+                evilLaugh.play()
                 game.parentNode.removeChild(game);
                 container.appendChild(lose);
                 document.getElementById('body').className = 'lose-screen';
@@ -127,7 +151,6 @@ function firstQuote() {
     loopQuotes();
 };
 
-
 let firstTime = true
 
 function alohomora() {
@@ -145,6 +168,10 @@ function alohomora() {
 
     container.appendChild(game);
 
+    document.getElementById('sound').addEventListener('click', () => {
+        mute()
+    })
+
     setHouse(house);
 
     countdown(firstQuote);
@@ -155,20 +182,20 @@ document.getElementById('alohomora').addEventListener('click', () => {
     alohomora()
 })
 
-
 // All dark code
 
 gameDark.className = "canvas";
 gameDark.innerHTML = `
-<h1 id="countdown">3</h1>
-<canvas id="myDarkCanvas" width="800" height="450">
-</canvas>
-<div id="buttons">
-    <button class="char malfoy"><img class="malfoy" src="/MagicWordsGame/Dark code/Dark images/malfoy.png" alt="Malfoy""></button>
-    <button class="char snape"><img class="snape" src="/MagicWordsGame/Dark code/Dark images/snape.png" alt="Snape"></button>
-    <button class="char voldemort"><img class="voldemort" src="/MagicWordsGame/Dark code/Dark images/voldemort.png" alt="Voldemort"></button>
-    <button class="char umbridge"><img class="umbridge" src="/MagicWordsGame/Dark code/Dark images/umbridge.png" alt="Umbridge"></button>
-</div>
+    <button id="sound"><img id="speaker" src='/MagicWordsGame/Images/sound.png' alt='play'></button>    
+    <h1 id="countdown">3</h1>
+    <canvas id="myDarkCanvas" width="800" height="450">
+    </canvas>
+    <div id="buttons">
+        <button class="char malfoy"><img class="malfoy" src="/MagicWordsGame/Dark code/Dark images/malfoy.png" alt="Malfoy""></button>
+        <button class="char snape"><img class="snape" src="/MagicWordsGame/Dark code/Dark images/snape.png" alt="Snape"></button>
+        <button class="char voldemort"><img class="voldemort" src="/MagicWordsGame/Dark code/Dark images/voldemort.png" alt="Voldemort"></button>
+        <button class="char umbridge"><img class="umbridge" src="/MagicWordsGame/Dark code/Dark images/umbridge.png" alt="Umbridge"></button>
+    </div>
 `;
 
 function loopDarkQuotes() {
@@ -178,19 +205,18 @@ function loopDarkQuotes() {
     parchmentY = -parchment.height;
 
     pickDarkQuote(darkQuotes)
+
     intervalID = setInterval(() => {
         requestAnimationFrame(drawDarkParchment);
         requestAnimationFrame(drawDarkQuote);
     }, 19)
 
     determineDarkChar(darkQuotes, pickedDarkQuote)
-    console.log(characterQuoted);
 }
 
 function darkCharClicked() {
+
     document.querySelectorAll('.char').forEach(item => {
-
-
         item.addEventListener('click', event => {
             if (score === 4) {
                 gameDark.parentNode.removeChild(gameDark);
@@ -202,9 +228,11 @@ function darkCharClicked() {
                 })
                 clearInterval(intervalID);
             } else if (event.target.classList.contains(characterQuoted)) {
+                tenPoints.play();
                 score++
                 loopDarkQuotes()
             } else {
+                evilLaugh.play()
                 gameDark.parentNode.removeChild(gameDark);
                 container.appendChild(lose);
                 document.getElementById('body').className = 'lose-screen';
@@ -241,6 +269,10 @@ function playDark() {
     }
 
     container.appendChild(gameDark);
+
+    document.getElementById('sound').addEventListener('click', () => {
+        mute()
+    })
 
     setHouse(house);
 

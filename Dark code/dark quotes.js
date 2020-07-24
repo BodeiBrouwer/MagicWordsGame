@@ -32,7 +32,7 @@ let darkQuote1 = '';
 let darkQuote2 = '';
 let pickedDarkQuote = '';
 let arrayOfDarkIndexes = []
-let test = 'test'
+let test = 'test';
 
 //This is parchment code
 
@@ -41,11 +41,12 @@ function drawDarkParchment() {
     ctx.drawImage(parchment, 245, parchmentY, 350, 150);
 
     if (parchmentY > canvas.height) {
+        evilLaugh.play()
         gameDark.parentNode.removeChild(gameDark);
         container.appendChild(lose);
         document.getElementById('body').className = 'lose-screen';
         document.getElementById('try-again').addEventListener('click', () => {
-            alohomora()
+            playDark()
         })
         clearInterval(intervalID);
     } else {
